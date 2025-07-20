@@ -17,7 +17,8 @@ CREATE TABLE usuarios (
 
 CREATE TABLE pacientes (
   id_paciente serial PRIMARY KEY,
-  id_usuario integer
+  id_usuario integer,
+  id_psicologo integer
 );
 
 CREATE TABLE psicologos (
@@ -73,8 +74,9 @@ INSERT INTO psicologos (id_usuario, crp) VALUES (5, 0612345);
 
 INSERT INTO psicologo_notas (id_psicologo, id_paciente, anotacao, data_criacao) values (1, 1, 'Paciente chegou no horário, aparentando leve cansaço.', '2025-07-18 14:30:00');
 
-ALTER TABLE pacientes ADD FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+ALTER TABLE pacientes ADD FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 ALTER TABLE psicologos ADD FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+ALTER TABLE pacientes ADD FOREIGN KEY (id_psicologo) REFERENCES psicologos (id_psicologo);
 ALTER TABLE paciente_emocao ADD FOREIGN KEY (id_paciente) REFERENCES pacientes (id_paciente);
 ALTER TABLE paciente_emocao ADD FOREIGN KEY (id_emocao) REFERENCES emocoes (id_emocao);
 ALTER TABLE paciente_medicamento ADD FOREIGN KEY (id_paciente) REFERENCES pacientes (id_paciente);
