@@ -50,7 +50,7 @@ CREATE TABLE paciente_emocao (
   id_paciente_emocao serial PRIMARY KEY,
   id_paciente integer,
   id_emocao integer,
-  qualidade boolean,
+  qualidade integer,
   id_intensidade integer,
   descricao text, 
   atividade text,
